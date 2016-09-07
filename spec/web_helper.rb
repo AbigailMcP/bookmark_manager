@@ -5,3 +5,11 @@ def enter_link(url, title, tag)
   fill_in('tags', with: tag)
   click_button('Add Link')
 end
+
+def signup(name, email, password)
+  visit '/signup'
+  fill_in('name', with: name)
+  fill_in('email', with: email)
+  fill_in('password', with: password)
+  click_button('Sign up')
+end
