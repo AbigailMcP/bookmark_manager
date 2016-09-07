@@ -47,6 +47,7 @@ class BookmarkManager < Sinatra::Base
       redirect '/links'
     else
       flash[:error] = 'Incorrect password'
+      flash[:email] = params[:email]
       redirect '/login'
     end
   end

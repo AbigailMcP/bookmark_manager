@@ -5,7 +5,7 @@
 <form action='/login' method="post">
   <p>
     <label for="email">Email:
-      <input type="email" name='email' required>
+      <input type="email" name='email' value='<%= "#{flash[:email]}" %>' required>
     </label>
     <label for="password">Password:
       <input type="password" name='password' required>
