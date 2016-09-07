@@ -28,8 +28,8 @@ feature 'Sign up' do
   end
 
   scenario 'user must have unique email' do
-    signup('Beatrice', 'puppies@gmail.com', 'password123', 'password123')
-    expect{signup('Beatrice', 'puppies@gmail.com', 'password123', 'password123')}.not_to change{User.count}
+    sign_up('Beatrice', 'puppies@gmail.com', 'password123', 'password123')
+    expect{sign_up('Beatrice', 'puppies@gmail.com', 'password123', 'password123')}.not_to change{User.count}
     expect(page).to have_content('Email is already taken')
   end
 end
