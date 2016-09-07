@@ -18,4 +18,12 @@ feature 'Sign up' do
     expect(page).to have_current_path(/signup/)
     expect(page).to have_content('Password and confirmation password do not match')
   end
+
+  scenario 'user must enter email' do
+    expect{signup_no_email('Beatrice', 'password123', 'password123')}.not_to change{User.count}
+  end
+
+  scenario 'user must enter email in correct format' do
+    expect{signup('Beatrice', 'puppies', 'password123', 'password123')}.not_to change{User.count}
+  end
 end

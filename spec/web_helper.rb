@@ -14,3 +14,11 @@ def signup(name, email, password, password_confirmation)
   fill_in('password_confirmation', with: password_confirmation)
   click_button('Sign up')
 end
+
+def signup_no_email(name, password, password_confirmation)
+  visit '/signup'
+  fill_in('name', with: name)
+  fill_in('password', with: password)
+  fill_in('password_confirmation', with: password_confirmation)
+  click_button('Sign up')
+end

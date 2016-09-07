@@ -4,16 +4,16 @@
 <form action='/signup' method="post">
   <p>
     <label for="name">Name:
-      <input type="text" name='name' value = <%= "#{flash[:name]}" %> >
+      <input type="text" name='name' value = '<%= "#{flash[:name]}" %>' required>
     </label>
     <label for="email">Email:
-      <input type="text" name='email' value = <%= "#{flash[:email]}" %> >
+      <input type="email" name='email' value = '<%= "#{flash[:email]}" %>' required>
     </label>
     <label for="password">Password:
-      <input type="password" name='password'>
+      <input type="password" name='password' required>
     </label>
     <label for="password_confirmation">Please confirm password:
-      <input type="password" name='password_confirmation'>
+      <input type="password" name='password_confirmation' required>
     </label>
   <input type="submit" value='Sign up'>
 </p>

@@ -8,7 +8,6 @@ require 'sinatra/flash'
 
 
 class BookmarkManager < Sinatra::Base
-
   enable :sessions
   register Sinatra::Flash
   set :session_secret, 'super secret'
