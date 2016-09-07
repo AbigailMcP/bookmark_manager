@@ -24,13 +24,14 @@ class BookmarkManager < Sinatra::Base
                        email: params[:email],
                        password: params[:password],
                        password_confirmation: params[:password_confirmation])
-    session[:name] = user.name
+    session[:user_id] = user.id
     redirect '/links'
   end
 
   get '/links' do
     @links = Link.all
-    @name = session[:name]
+    user = User.get(session[:user_id])
+    @name = user.name if user
     erb :'links/index'
   end
 
