@@ -16,7 +16,7 @@ feature 'Sign up' do
     expect(page).not_to have_content('Welcome, Beatrice!')
     expect(User.first).to eq nil
     expect(page).to have_current_path(/signup/)
-    expect(page).to have_content('Password and confirmation password do not match')
+    expect(page).to have_content('Password does not match the confirmation')
   end
 
   scenario 'user must enter email' do
@@ -25,5 +25,11 @@ feature 'Sign up' do
 
   scenario 'user must enter email in correct format' do
     expect{signup('Beatrice', 'puppies', 'password123', 'password123')}.not_to change{User.count}
+  end
+
+  scenario 'user must have unique email' do
+    signup('Beatrice', 'puppies@gmail.com', 'password123', 'password123')
+    expect{signup('Beatrice', 'puppies@gmail.com', 'password123', 'password123')}.not_to change{User.count}
+    expect(page).to have_content('Email is already taken')
   end
 end
