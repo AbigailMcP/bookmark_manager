@@ -1,12 +1,13 @@
 <h1>New user sign up</h1>
+<%= "#{flash[:error]}" %>
 
 <form action='/signup' method="post">
   <p>
     <label for="name">Name:
-      <input type="text" name='name'>
+      <input type="text" name='name' value = <%= "#{flash[:name]}" %> >
     </label>
     <label for="email">Email:
-      <input type="text" name='email'>
+      <input type="text" name='email' value = <%= "#{flash[:email]}" %> >
     </label>
     <label for="password">Password:
       <input type="password" name='password'>

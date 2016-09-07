@@ -15,5 +15,7 @@ feature 'Sign up' do
     expect{signup('Beatrice', 'puppies@gmail.com', 'password123', 'password456')}.not_to change{User.count}
     expect(page).not_to have_content('Welcome, Beatrice!')
     expect(User.first).to eq nil
+    expect(page).to have_current_path(/signup/)
+    expect(page).to have_content('Password and confirmation password do not match')
   end
 end

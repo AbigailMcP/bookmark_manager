@@ -4,11 +4,13 @@ require 'sinatra/base'
 require_relative 'models/link'
 require_relative 'models/user'
 require_relative 'data_mapper_setup'
+require 'sinatra/flash'
 
 
 class BookmarkManager < Sinatra::Base
 
   enable :sessions
+  register Sinatra::Flash
   set :session_secret, 'super secret'
 
   get '/' do
@@ -25,7 +27,14 @@ class BookmarkManager < Sinatra::Base
                        password: params[:password],
                        password_confirmation: params[:password_confirmation])
     session[:user_id] = user.id
-    redirect '/links'
+    if User.get(user.id)
+      redirect '/links'
+    else
+      flash[:error] = 'Password and confirmation password do not match'
+      flash[:email] = params[:email]
+      flash[:name] = params[:name]
+      redirect '/signup'
+    end
   end
 
   get '/links' do
