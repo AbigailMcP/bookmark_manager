@@ -6,7 +6,7 @@ def enter_link(url, title, tag)
   click_button('Add Link')
 end
 
-def signup(name, email, password, password_confirmation)
+def sign_up(name, email, password, password_confirmation)
   visit '/signup'
   fill_in('name', with: name)
   fill_in('email', with: email)
@@ -15,10 +15,17 @@ def signup(name, email, password, password_confirmation)
   click_button('Sign up')
 end
 
-def signup_no_email(name, password, password_confirmation)
+def sign_up_no_email(name, password, password_confirmation)
   visit '/signup'
   fill_in('name', with: name)
   fill_in('password', with: password)
   fill_in('password_confirmation', with: password_confirmation)
   click_button('Sign up')
+end
+
+def login(email, password)
+  visit '/login'
+  fill_in('email', with: email)
+  fill_in('password', with: password)
+  click_button('Sign in')
 end
