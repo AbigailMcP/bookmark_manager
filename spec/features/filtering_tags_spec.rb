@@ -10,4 +10,14 @@ feature 'Filtering tags' do
     expect(page).not_to have_content('Makers Academy')
   end
 
+  scenario 'a user filters with multiple tags' do
+    enter_link('http://www.makersacademy.com', 'Makers Academy', 'education, bootcamp, coding')
+    visit '/tags/coding'
+    expect(page).to have_content('Makers Academy')
+    visit '/tags/bootcamp'
+    expect(page).to have_content('Makers Academy')
+    visit '/tags/education'
+    expect(page).to have_content('Makers Academy')
+  end
+
 end

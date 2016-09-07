@@ -8,5 +8,5 @@ class Tag
 
   property :id,   Serial
   property :tag,   String
-
+  property :date_added, Date
 end

@@ -8,6 +8,7 @@ source "https://rubygems.org"
     gem 'rspec-sinatra'
     gem 'capybara'
     gem 'database_cleaner'
+    gem 'rake'
 
 # gem "rails"
   gem 'data_mapper'
