@@ -46,7 +46,10 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/sign_up' do
-    @user = User.create(name: params[:name], email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+    @user = User.create(name: params[:name],
+                        email: params[:email],
+                        password: params[:password],
+                        password_confirmation: params[:password_confirmation])
     if @user.id != nil
       session[:user_name] = @user.name
       redirect '/links'
@@ -69,6 +72,12 @@ class BookmarkManager < Sinatra::Base
       flash[:login_failed] = "Login failed!"
       redirect '/sign_in'
     end
+  end
+
+  post '/sign_out' do
+    session[:user_name] = nil
+    flash[:signed_out] = 'Signed out - come back soon'
+    redirect '/sign_in'
   end
   # start the server if ruby file executed directly
   run! if app_file == $0

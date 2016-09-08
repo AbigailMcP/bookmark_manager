@@ -1,4 +1,8 @@
-<h1> Please sign up for a new Bookmark account </h1>
+<h1> Please sign in to your Bookmark account </h1>
+
+<% if flash[:signed_out] %>
+    <%= flash[:signed_out] %>
+<% end %>
 
 <form action="/sign_in" method="post">
   Email: <input type="email" name="email" placeholder="me@example.com" required>
